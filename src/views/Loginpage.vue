@@ -43,6 +43,7 @@ export default {
 				}).then((bool)=>{
 					bool ? this.$router.push({ path: '/' }) : this.password = ""
 				})
+
 			}
 		},
 	},

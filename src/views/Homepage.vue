@@ -2,6 +2,7 @@
 	<nav class="flex py-3 bg-red-500">
 		<section class="container mx-auto flex justify-between">
 			<div>FoodCome</div>
+
 			<button @click="logout" class="text-white">Logout</button>
 		</section>
 	</nav>

@@ -16,6 +16,7 @@ export default createStore({
 			return state.user.role;
 		}
 	},
+
 	mutations: {
 		setUser(state, payload) {
 			state.user = payload
@@ -34,6 +35,7 @@ export default createStore({
 			if (bearer.status == 200) {
 				localStorage.setItem('token', bearer.data)
 				await dispatch('getUser')
+
 				return true
 			}
 			else if (bearer.status == 299) {
@@ -67,6 +69,7 @@ export default createStore({
 				localStorage.removeItem('token')
 				commit('setUser', null)
 			})
+
 		}
 	},
 })
