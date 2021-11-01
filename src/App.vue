@@ -1,26 +1,45 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+	<transition name="fade">
+		<Notification v-if="$store.state.error"/>
+	</transition>
+	<router-view></router-view>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Notification from '@/components/Notification'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+	components:{
+		Notification
+	},
 }
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url('/src/tailwind.min.css');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+html, body, #app {
+	height: 100%;
+}
+body {
+	background: white;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    transition: background-color 5000s ease-in-out 0s;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease,transform 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.form-width{
+   width: 768px;
 }
 </style>
