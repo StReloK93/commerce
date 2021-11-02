@@ -16,12 +16,19 @@ export default {
 @import url('/src/tailwind.min.css');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
+
+@font-face {
+	font-family: 'risingsun'; 
+	src: url('/font/risingsun.ttf'); 
+}
+
 html, body, #app {
 	height: 100%;
 }
 body {
 	background: white;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	/* font-family: 'risingsun'; */
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 

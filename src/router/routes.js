@@ -23,4 +23,20 @@ export default [
 			guard: 'guest'
 		}
 	},
+	{
+		path: '/shop',
+		component: () => import('../views/shop/Shopmainpage.vue'),
+		name: 'shop',
+		meta: {
+			guard: 'shop'
+		}
+	},
+	{
+		path: '/admin',
+		component: () => import('../views/admin/Adminmainpage.vue'),
+		name: 'admin',
+		meta: {
+			guard: 'admin'
+		}
+	},
 ];

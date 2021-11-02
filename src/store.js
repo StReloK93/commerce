@@ -1,8 +1,10 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
+
 axios.defaults.withCredentials = true
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api'
 window.axios = axios
+
 
 export default createStore({
 	state() {
@@ -16,7 +18,6 @@ export default createStore({
 			return state.user.role;
 		}
 	},
-
 	mutations: {
 		setUser(state, payload) {
 			state.user = payload
@@ -34,13 +35,11 @@ export default createStore({
 			var bearer = await axios.post('/login', payload)
 			if (bearer.status == 200) {
 				localStorage.setItem('token', bearer.data)
-				await dispatch('getUser')
-
-				return true
+				return await dispatch('getUser')
 			}
 			else if (bearer.status == 299) {
 				commit('pushNotification', bearer.data)
-				return false
+				return 403
 			}
 		},
 		//register axios request
@@ -48,20 +47,19 @@ export default createStore({
 			var bearer = await axios.post('/register', payload)
 			if (bearer.status == 200) {
 				localStorage.setItem('token', bearer.data)
-				await dispatch('getUser')
-				return true
+				return await dispatch('getUser')
 			}
 			else if (bearer.status == 299) {
 				commit('pushNotification', bearer.data)
-				return false
+				return 403
 			}
 		},
 		async getUser({ commit }) {
 			if (localStorage.getItem('token')) {
 				axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')
-				await axios.get('user').then(res => {
-					commit('setUser', res.data)
-				})
+				var {data} = await axios.get('user')
+				commit('setUser', data)
+				return data
 			}
 		},
 		async logout({ commit }) {
@@ -69,6 +67,7 @@ export default createStore({
 				axios.defaults.headers.common['Authorization'] = null
 				localStorage.removeItem('token')
 				commit('setUser', null)
+				window.router.push({ name: "login" })
 			})
 
 		}

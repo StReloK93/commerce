@@ -85,8 +85,10 @@ export default {
 						}
 					else endData.append(parentkey, this.formdata[parentkey])
 				}
-				this.$store.dispatch("register", endData).then((bool) => {
-					if(bool) this.$router.push({ path: "/" });
+				this.$store.dispatch("register", endData).then((user) => {
+					if(user.role == 0) this.$router.push({ path: "/" })
+					else if(user.role == 1) this.$router.push({ path: "/shop" })
+					else if(user.role == 2) this.$router.push({ path: "/admin" })
 				});
 			}
 		},

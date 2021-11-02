@@ -1,13 +1,20 @@
 <template>
-	<div>
-		<h3>
-			Shop page
-		</h3>
-	</div>
+	<section class="flex h-full">
+		<leftPanel/>
+		<main class="flex-grow bg-gray-100 p-16">
+			<shopHeader/>
+		</main>
+	</section>
 </template>
 <script>
-export default {};
-
+import leftPanel from "@/components/shop/leftPanel"
+import shopHeader from "@/components/shop/shopHeader"
+export default {
+	components: {
+		leftPanel,
+		shopHeader
+	},
+};
 </script>
 <style>
    
