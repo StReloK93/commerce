@@ -1,7 +1,7 @@
 export default [
 	{
 		path: '/',
-		component: () => import('../views/Homepage.vue'),
+		component: () => import('../views/guest/Homepage.vue'),
 		name: 'home',
 		meta: {
 			guard: 'auth'
@@ -9,7 +9,7 @@ export default [
 	},
 	{
 		path: '/login',
-		component: () => import('../views/Loginpage.vue'),
+		component: () => import('../views/guest/Loginpage.vue'),
 		name: 'login',
 		meta: {
 			guard: 'guest'
@@ -17,7 +17,7 @@ export default [
 	},
 	{
 		path: '/register',
-		component: () => import('../views/Registerpage.vue'),
+		component: () => import('../views/guest/Registerpage.vue'),
 		name: 'register',
 		meta: {
 			guard: 'guest'

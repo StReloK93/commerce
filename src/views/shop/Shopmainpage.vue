@@ -1,5 +1,9 @@
 <template>
-	<div></div>
+	<div>
+		<h3>
+			Shop page
+		</h3>
+	</div>
 </template>
 <script>
 export default {};

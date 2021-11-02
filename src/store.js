@@ -43,11 +43,12 @@ export default createStore({
 				return false
 			}
 		},
+		//register axios request
 		async register({ dispatch, commit }, payload) {
 			var bearer = await axios.post('/register', payload)
 			if (bearer.status == 200) {
 				localStorage.setItem('token', bearer.data)
-				dispatch('getUser')
+				await dispatch('getUser')
 				return true
 			}
 			else if (bearer.status == 299) {
