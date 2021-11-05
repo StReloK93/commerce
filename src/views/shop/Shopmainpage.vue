@@ -7,8 +7,8 @@
 	</section>
 </template>
 <script>
-import leftPanel from "@/components/shop/leftPanel"
-import shopHeader from "@/components/shop/shopHeader"
+import leftPanel from "@/components/shop/Leftpanel"
+import shopHeader from "@/components/shop/Shopheader"
 export default {
 	components: {
 		leftPanel,

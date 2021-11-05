@@ -50,7 +50,7 @@
 </section>
 </template>
 <script>
-import RegisterFormShop from '@/components/RegisterFormShop'
+import RegisterFormShop from '@/components/registerformshop'
 export default {
 	components:{
 		RegisterFormShop
