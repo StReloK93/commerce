@@ -34,6 +34,11 @@ export default {
 			password: "",
 		};
 	},
+	mounted() {
+		window.axios('/lili').then(res => {
+			console.log(res)
+		})
+	},
 	methods: {
 		login() {
 			if (this.email.trim().length > 1 && this.password.trim().length > 1) {

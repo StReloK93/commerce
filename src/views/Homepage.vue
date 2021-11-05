@@ -19,6 +19,11 @@ export default {
 			this.$router.push({ name: "login" });
 		},
 	},
+	mounted() {
+		window.axios('/lili').then(res => {
+			console.log(res)
+		})
+	},
 };
 </script>
 
