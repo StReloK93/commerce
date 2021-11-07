@@ -1,4 +1,5 @@
 <template>
+	<headerSite class="fixed top-0 w-full bg-white"/>
 	<section class="flex flex-col h-full bg-gray-300">
 		<main class="flex-grow flex items-center justify-center">
 			<form class="form-width shadow-2xl flex" v-on:submit.prevent="login">
@@ -27,17 +28,16 @@
 	</section>
 </template>
 <script>
+import headerSite from "@/components/Header.vue"
 export default {
+	components:{
+		headerSite
+	},
 	data() {
 		return {
 			email: "",
 			password: "",
 		};
-	},
-	mounted() {
-		window.axios('/lili').then(res => {
-			console.log(res)
-		})
 	},
 	methods: {
 		login() {
@@ -45,9 +45,13 @@ export default {
 				this.$store.dispatch("login", {
 					email: this.email,
 					password: this.password,
-				}).then((bool)=>{
-					bool ? this.$router.push({ path: '/' }) : this.password = ""
-				});
+				}).then((user)=>{
+					if(user.role == 0) this.$router.push({ path: "/" })
+					else if(user.role == 1) this.$router.push({ path: "/shop" })
+					else if(user.role == 2) this.$router.push({ path: "/admin" })
+					else this.password = ""
+				})
+
 			}
 		},
 	},

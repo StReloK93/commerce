@@ -1,17 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import store from '../store'
 import routes from './routes.js'
 const router = createRouter({
   history: createWebHistory(),
   routes
 })
 
-router.beforeEach((to, from, next) => {
-	if (localStorage.getItem('token')) {
-		if (to.matched.some(route => route.meta.guard === 'guest')) next({ name: 'home' })
-		else next();
+function nextlinkGuard(to,guard){
+	return to.matched.some(route => route.meta.guard === guard)
+}
 
+router.beforeEach((to, from, next) => {
+	if (store.state.user) {
+		if (nextlinkGuard(to,'guest')) next({ name: 'home' })
+		if((nextlinkGuard(to,'admin') || nextlinkGuard(to,'shop')) && store.state.user.role == 0) next({ name: 'home' });
+		if(nextlinkGuard(to,'admin') && store.state.user.role == 1) next({ name: 'shop' });
+		else next();
 	} else {
-		if (to.matched.some(route => route.meta.guard === 'auth')) next({ name: 'login' })
+		if (nextlinkGuard(to,'auth') || nextlinkGuard(to,'admin') || nextlinkGuard(to,'shop')) next({ name: 'login' })
 		else next();
 	}
 })

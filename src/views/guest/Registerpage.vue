@@ -1,4 +1,5 @@
 <template>
+<headerSite class="fixed top-0 w-full bg-white"/>
 <section class="flex flex-col h-full bg-gray-300">
 	<main class="flex-grow flex items-center justify-center">
 		<form class="form-width shadow-2xl flex" v-on:submit.prevent="register">
@@ -51,9 +52,12 @@
 </template>
 <script>
 import RegisterFormShop from '@/components/RegisterFormShop'
+import headerSite from "@/components/Header.vue"
+
 export default {
 	components:{
-		RegisterFormShop
+		RegisterFormShop,
+		headerSite
 	},
 	data() {
 		return {
@@ -85,8 +89,10 @@ export default {
 						}
 					else endData.append(parentkey, this.formdata[parentkey])
 				}
-				this.$store.dispatch("register", endData).then((bool) => {
-					if(bool) this.$router.push({ path: "/" });
+				this.$store.dispatch("register", endData).then((user) => {
+					if(user.role == 0) this.$router.push({ path: "/" })
+					else if(user.role == 1) this.$router.push({ path: "/shop" })
+					else if(user.role == 2) this.$router.push({ path: "/admin" })
 				});
 			}
 		},
