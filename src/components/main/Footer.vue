@@ -1,5 +1,5 @@
 <template>
-    <section class="flex mt-8 py-6">
+    <section class="container mx-auto flex mt-8 px-10 py-6">
         <main>
             <router-link class="block my-1" to="#">To`lov</router-link>
             <router-link class="block my-1" to="#">Savol javoblar</router-link>

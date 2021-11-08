@@ -1,12 +1,12 @@
 export default [
 	{
 		path: '/',
-		component: () => import('@/views/all/Homepage.vue'),
+		component: () => import('@/views/main/HomePage.vue'),
 		name: 'home',
 	},
 	{
 		path: '/login',
-		component: () => import('@/views/guest/Loginpage.vue'),
+		component: () => import('@/views/main/LoginPage.vue'),
 		name: 'login',
 		meta: {
 			guard: 'guest'
@@ -14,7 +14,7 @@ export default [
 	},
 	{
 		path: '/register',
-		component: () => import('@/views/guest/Registerpage.vue'),
+		component: () => import('@/views/main/RegisterPage.vue'),
 		name: 'register',
 		meta: {
 			guard: 'guest'
@@ -22,7 +22,7 @@ export default [
 	},
 	{
 		path: '/shop',
-		component: () => import('@/views/shop/Shopmainpage.vue'),
+		component: () => import('@/views/shop/ShopMainPage.vue'),
 		name: 'shop',
 		meta: {
 			guard: 'shop'
@@ -30,7 +30,7 @@ export default [
 	},
 	{
 		path: '/admin',
-		component: () => import('@/views/admin/Adminmainpage.vue'),
+		component: () => import('@/views/admin/AdminMainPage.vue'),
 		name: 'admin',
 		meta: {
 			guard: 'admin'

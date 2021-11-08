@@ -1,6 +1,6 @@
 <template>
-	<headerSite class="fixed top-0 w-full bg-white"/>
-	<section class="flex flex-col h-full bg-gray-300">
+	<HeaderSite class="fixed top-0 w-full bg-white shadow"/>
+	<section class="flex flex-col h-full bg-gray-200">
 		<main class="flex-grow flex items-center justify-center">
 			<form class="form-width shadow-2xl flex" v-on:submit.prevent="login">
 				<section class="w-1/2 loginback"></section>
@@ -28,10 +28,10 @@
 	</section>
 </template>
 <script>
-import headerSite from "@/components/Header.vue"
+import HeaderSite from "@/components/main/Header.vue"
 export default {
 	components:{
-		headerSite
+		HeaderSite
 	},
 	data() {
 		return {
@@ -51,7 +51,6 @@ export default {
 					else if(user.role == 2) this.$router.push({ path: "/admin" })
 					else this.password = ""
 				})
-
 			}
 		},
 	},

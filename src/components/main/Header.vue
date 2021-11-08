@@ -1,5 +1,5 @@
 <template>
-    <nav class="flex py-4 border-b">
+    <nav class="flex py-4">
         <section class="container mx-auto px-10 flex justify-between">
             <router-link to="/">
                 <img src="/logo.png" class="logoimage" />

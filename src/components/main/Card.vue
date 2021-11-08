@@ -1,5 +1,5 @@
 <template>
-    <section class="px-4">
+    <section class="px-4 mb-4">
         <aside class="shadow-xl">
             <img src="/image.jpg" alt="">
             <div class="p-3">

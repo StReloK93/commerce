@@ -5,7 +5,7 @@
 	<router-view></router-view>
 </template>
 <script>
-import Notification from "@/components/Notification";
+import Notification from "@/components/main/Notification";
 export default {
 	components: {
 		Notification,
@@ -15,20 +15,11 @@ export default {
 <style>
 @import url('/src/tailwind.min.css');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
-
-@font-face {
-	font-family: 'risingsun'; 
-	src: url('/font/risingsun.ttf'); 
-}
-
 html, body, #app {
 	height: 100%;
 }
 body {
 	background: white;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-	/* font-family: 'risingsun'; */
 }
 input:focus{
 	outline: none;
