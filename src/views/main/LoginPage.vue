@@ -47,7 +47,7 @@ export default {
 					password: this.password,
 				}).then((user)=>{
 					if(user.role == 0) this.$router.push({ path: "/" })
-					else if(user.role == 1) this.$router.push({ path: "/shop" })
+					else if(user.role == 1) this.$router.push({ path: "/panel-shop" })
 					else if(user.role == 2) this.$router.push({ path: "/admin" })
 					else this.password = ""
 				})

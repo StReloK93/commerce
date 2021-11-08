@@ -1,18 +1,18 @@
 <template>
 	<section class="flex h-full">
-		<leftPanel/>
+		<LeftPanel/>
 		<main class="flex-grow bg-gray-100 p-16">
-			<shopHeader/>
+			<ShopHeader/>
 		</main>
 	</section>
 </template>
 <script>
-import leftPanel from "@/components/shop/Leftpanel"
-import shopHeader from "@/components/shop/Shopheader"
+import LeftPanel from "@/components/shop/LeftPanel"
+import ShopHeader from "@/components/shop/ShopHeader"
 export default {
 	components: {
-		leftPanel,
-		shopHeader
+		LeftPanel,
+		ShopHeader
 	},
 };
 </script>

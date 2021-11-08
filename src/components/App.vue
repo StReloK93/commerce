@@ -43,4 +43,14 @@ input:-webkit-autofill:active{
 .form-width{
    width: 768px;
 }
+body::-webkit-scrollbar {
+  width: 2px;               /* ширина scrollbar */
+}
+body::-webkit-scrollbar-track {
+  background: white;        /* цвет дорожки */
+}
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(34, 136, 85);    /* цвет плашки */
+  border-radius: 1px;       /* закругления плашки */
+}
 </style>

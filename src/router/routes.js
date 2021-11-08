@@ -5,6 +5,12 @@ export default [
 		name: 'home',
 	},
 	{
+		path: '/shop/:id',
+		component: () => import('@/views/main/ShopPage.vue'),
+		name: 'shoppage',
+		props: true
+	},
+	{
 		path: '/login',
 		component: () => import('@/views/main/LoginPage.vue'),
 		name: 'login',
@@ -21,7 +27,7 @@ export default [
 		}
 	},
 	{
-		path: '/shop',
+		path: '/panel-shop',
 		component: () => import('@/views/shop/ShopMainPage.vue'),
 		name: 'shop',
 		meta: {

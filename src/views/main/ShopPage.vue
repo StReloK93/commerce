@@ -13,44 +13,29 @@
                 <label for="searchiInp" class="material-icons">search</label>
             </main>
         </section>
-        <!-- shop types -->
-        <section class="flex p-8 justify-center">
-            <main  v-for="type in cafeTypes" :key="type" class="p-5 py-3 mx-5 text-center shadow-xl border border-gray-100">
-                <div class="mb-1">
-                    <img :src="type.image" class="w-16 inline">
-                </div>
-                <p >{{type.name}}</p>
-            </main>
-        </section>
-        <!-- shops -->
-        <section class="flex flex-wrap -mx-4">
-            <Card v-for="shop in shops" :key="shop.id" v-bind:shop="shop" class="w-1/4"/>
-        </section>
+        <h3 class="text-2xl" v-if="shop">
+            {{shop.name}}
+        </h3>
     </aside>
     <FooterSite/>
 </template>
 <script>
-import Card from "@/components/main/Card.vue"
 import HeaderSite from "@/components/main/Header.vue"
 import FooterSite from "@/components/main/Footer.vue"
 export default {
+    props: ['id'],
     components:{
-        Card,
         HeaderSite,
         FooterSite
     },
 	data() {
 		return {
-			cafeTypes: null,
-            shops: null
+            shop: null
 		}
 	},
     mounted() {
-        window.axios.get('/shop/type').then(res => {
-            this.cafeTypes = res.data
-        })
-        window.axios.get('/shop/all').then(res => {
-            this.shops = res.data
+        window.axios.get(`/getshop/${this.id}`).then(res => {
+            this.shop = res.data
         })
     },
 };
