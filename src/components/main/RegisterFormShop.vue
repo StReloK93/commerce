@@ -62,7 +62,7 @@ export default {
 	},
 	methods: {
 		getShopTypes() {
-			window.axios.get("/shop/type").then((res) => {
+			window.axios.get("/shoptype").then((res) => {
 				this.shoptypes = res.data;
 			});
 		},
