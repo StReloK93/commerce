@@ -12,7 +12,7 @@
 		<section class="flex p-8 justify-center">
 			<main class="p-5 py-3 mx-5 text-center shadow-xl border border-gray-100" @click="getShops(null)">
 				<div class="mb-1">
-					<img src="http://127.0.0.1:8000/cafetypes/food.png" class="w-16 inline" />
+					<img v-if="cafeTypes" :src="cafeTypes[0].image" class="w-16 inline" />
 				</div>
 				<p>Hammasi</p>
 			</main>
@@ -24,17 +24,19 @@
 			</main>
 		</section>
 		<!-- shops -->
-		<section v-if="shops != 0 && shops" class="flex flex-wrap -mx-4">
-			<Card v-for="shop in shops" :key="shop" v-bind:shop="shop" class="w-1/4" />
-		</section>
-		<section v-else class="text-3xl p-4 text-center">
-			Hech nima yo'q!
-		</section>
+		<transition name="scale" mode="out-in">
+			<section v-if="shops != 0 && shops" class="flex flex-wrap -mx-4">
+				<Card v-for="shop in shops" :key="shop" v-bind:shop="shop" class="w-1/4" />
+			</section>
+			<section v-else class="text-3xl p-4 text-center">
+				Hech nima yo'q!
+			</section>
+		</transition>
 	</aside>
 	<FooterSite />
 </template>
 <script>
-import Card from "@/components/main/Card.vue";
+import Card from "@/components/main/ShopCard.vue";
 import HeaderSite from "@/components/main/Header.vue";
 import FooterSite from "@/components/main/Footer.vue";
 export default {
@@ -55,6 +57,7 @@ export default {
 	},
 	methods: {
 		getShops(typeCafe = null) {
+			this.shops = null
 			if(typeCafe == null){
 				window.axios.get("/shop/all").then((res) => {
 					this.shops = res.data;
@@ -77,5 +80,17 @@ export default {
 <style>
 .mainimage {
     background-image: url("/src/mainimage.jpg");
+}
+
+.scale-enter-active,
+.scale-leave-active {
+  transition: all 0.3s ease-in-out;
+}
+
+
+.scale-enter-from,
+.scale-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
 }
 </style>

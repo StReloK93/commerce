@@ -13,7 +13,6 @@ export default {
 };
 </script>
 <style>
-@import url('/src/tailwind.min.css');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 html, body, #app {
 	height: 100%;

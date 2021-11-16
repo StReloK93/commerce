@@ -1,5 +1,5 @@
 <template>
-	<section class="w-20 py-16 px-3 flex flex-col justify-between shadow-2xl text-center">
+	<section class="w-20 py-16 px-3 flex flex-col justify-between shadow-2xl text-center relative">
 		<div>
 			<router-link to="/" class="font-bold">
 				<span class="text-indigo-500 text-2xl">FC</span>
